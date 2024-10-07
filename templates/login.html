@@ -1,0 +1,40 @@
+{% load static %}
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Sign Up Form</title>
+        <link rel="stylesheet" href="https://codepen.io/gymratpacks/pen/VKzBEp#0">
+        <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+    </head>
+    <body>
+      <div class="row">
+    <div class="col-md-12">
+      <form action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        <h1> Login </h1>
+        
+        <fieldset>
+          
+          <legend><span class="number">1</span> Your Basic Info</legend>
+
+          <label for="login_id">Email or Phone Number</label>
+          <input type="text" name="login_id" id="login_id" placeholder="Enter Email or Phone Number" required>
+       
+          <label for="password">Password:</label>
+          <input type="password" id="password"    name="user_password">
+        
+        </fieldset>
+       
+       
+        <button type="submit">Sign Up</button>
+        
+       </form>
+        </div>
+      </div>
+      
+    </body>
+</html>
