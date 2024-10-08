@@ -12,3 +12,13 @@ class Cuser(AbstractUser):
 
     def __str__(self):
         return f"{self.id} -- {self.username}"
+    
+
+class csv_files(models.Model):
+    user                = models.ForeignKey(Cuser,on_delete=models.CASCADE)
+    csv_name            = models.CharField(max_length=100,null=True,blank=True)
+    csv_size            = models.CharField(max_length=100,null=True,blank=True)
+    csv_file            = models.FileField(upload_to='csv_files/', null=True, blank=True)  # Store actual file
+
+    def __str__(self):
+        return f"{self.csv_name} ----  {self.user}"

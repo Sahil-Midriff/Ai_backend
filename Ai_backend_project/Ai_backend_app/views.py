@@ -21,7 +21,6 @@ def email_validation(value):
 def signup_view(request):
     if request.method == 'POST':
         email     = request.POST.get('email') 
-        thin     = request.POST.get('thin') 
         phone_no  = request.POST.get('phone_no')
         address   = request.POST.get('address')
         age       = request.POST.get('age')
@@ -75,7 +74,22 @@ def login_view(request):
 
 # Create your views here.
 def home(request):
-    return render(request,'signup.html')
+    if request.method == "POST" and  request.FILES['FileUpload']:
+        csv_file = request.FILES['FileUpload']
+        if not csv_file.name.endswith('.csv'):
+            return HttpResponse("Invalid file format. Please upload a CSV file.")
+        
+        print('request ka files name ------',csv_file.name)
+        print('request ka files size ------',csv_file.size)
+
+        csv_files.objects.create(
+            user = request.user,
+            csv_name = csv_file.name ,
+            csv_size = csv_file.size,
+            csv_file = csv_file
+        )
+
+    return render(request,'csv.html')
 
 # def signup(request):
 #     return render(request,'signup.html')

@@ -1,0 +1,62 @@
+{% load static %}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Programming Task</title>
+    <link rel="stylesheet" href="{% static 'css/csv.css' %}">
+    <link rel="stylesheet" href="{% static 'js/csv.js' %}">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  
+    <body>
+		<div class="container ">	        
+			<header class="row">
+				<div class="col-xs-12">	
+					<h1>Programming Task</h1>	
+                </div>
+            </header>  
+             	
+			<section class="row">
+				<div class="col-xs-12">						
+					<h2 id="introHeader">Upload your CSV File</h2>
+					<form method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <fieldset>
+                            <input type="file" name="FileUpload" id="txtFileUpload" accept=".csv" />
+                        </fieldset>
+                        <br>
+                        <button type="submit">Upload CSV</button>
+                    </form>
+					{% comment %} <ul id="errorOutPut"  class="outPut hidden">						
+						<li>Sorry there has been an error.</li>
+					</ul> {% endcomment %}
+					
+					{% comment %} <ul id="statOutPut" class="outPut">
+						<li>Total number of integers: <span data-bind="text: countOfIntegers">null</span></li>	
+						<li>Mean value of all integers (to three decimal places): <span data-bind="text: meanOfIntegers">null</span></li>	
+						<li>Highest number of integers in a single line: <span data-bind="text: highestLength">null</span></li>			
+						<li>Most common integer: <span data-bind="text: commonInteger">null</span></li>				
+					</ul> {% endcomment %}
+				</div>
+			</section>
+                
+            <footer class="row">
+                {% comment %} <div class="col-xs-12">	
+                	<p>By Darren Ivey</p>
+                </div> {% endcomment %}
+            </footer>
+		</div>		
+		
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-alpha1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+	
+    </body>
+</html>
